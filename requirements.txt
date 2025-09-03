@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+databases[postgres]
+python-jose
+bcrypt
+pydantic
+python-dotenv 
+pydantic-settings
+psycopg2
+pydantic[email]
+python-multipart

@@ -1,12 +1,15 @@
 fastapi
 uvicorn[standard]
 sqlalchemy
+sqlalchemy[asyncio]
 databases[postgres]
 python-jose
 bcrypt
+asyncpg
 pydantic
 python-dotenv 
 pydantic-settings
 psycopg2
 pydantic[email]
 python-multipart
+psycopg2-binary

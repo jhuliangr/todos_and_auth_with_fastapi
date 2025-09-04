@@ -15,6 +15,10 @@ Don't forget to put the database url you pretend to use
 ```cmd
 pip install -r requirements.txt
 ```
+## To run migrations
+```cmd
+alembic upgrade head
+```
 
 ## To run project
 ```python

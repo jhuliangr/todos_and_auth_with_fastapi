@@ -15,7 +15,7 @@ def create_access_token(data: dict):
     encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
     return encoded_jwt
 
-def get_current_user(
+async def get_current_user(
     token: str = Depends(oauth2_scheme),
     db: Session = Depends(get_db), 
 ):
@@ -34,7 +34,7 @@ def get_current_user(
     except JWTError:
         raise credentials_exception
     
-    user = get_user_by_username(db, username=username)
+    user = await get_user_by_username(db, username=username)
     if user is None:
         raise credentials_exception
     return {"id": user.id, "email": user.email}

@@ -15,6 +15,8 @@ class User(UserBase):
     
     class Config:
         from_attributes = True
+        orm_mode = True
+        extra = 'forbid'
 
 class UserUpdate(BaseModel):
     username: Optional[str] = None

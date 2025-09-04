@@ -2,14 +2,15 @@ from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.orm import Session
 from typing import List
 from database import get_db
-from app.schemas.user import User, UserCreate, UserUpdate
+from app.schemas.user import User, UserCreate, UserUpdate, UserUpdateResponse
 from app.crud.user import (
     create_user,
     get_user_by_email,
     update_user,
     delete_user
 )
-from app.crud.auth import get_current_user, create_access_token
+from app.crud.auth import get_current_user
+from app.lib.utils import create_access_token
 
 router = APIRouter(prefix="/user", tags=["users"])
 
@@ -30,7 +31,7 @@ async def read_user(
         raise HTTPException(status_code=400, detail="User not found or unauthorized")
     return user
 
-@router.put("/", response_model=User)
+@router.put("/", response_model=UserUpdateResponse)
 async def update_user_by_email(
     user_update: UserUpdate, 
     db: Session = Depends(get_db),

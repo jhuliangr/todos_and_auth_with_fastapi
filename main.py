@@ -4,7 +4,6 @@ from fastapi.middleware.cors import CORSMiddleware
 from database import engine, Base
 from config import Settings, get_settings
 
-# Base.metadata.create_all(bind=engine)
 
 def create_app() -> FastAPI:
     settings = get_settings()

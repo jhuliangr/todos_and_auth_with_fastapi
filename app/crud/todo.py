@@ -14,7 +14,7 @@ async def get_todo_by_id(db: AsyncSession, todo_id: str):
     return result.scalars().first()
 
 async def create_user_todo(db: AsyncSession, todo: TodoCreate, user_id: str):
-    db_todo = ToDo(**todo.dict(), user_id=user_id)
+    db_todo = ToDo(**todo.model_dump(), user_id=user_id)
     db.add(db_todo)
     await db.commit()
     await db.refresh(db_todo)
@@ -23,7 +23,7 @@ async def create_user_todo(db: AsyncSession, todo: TodoCreate, user_id: str):
 async def update_todo(db: AsyncSession, todo_id: str, todo_update: TodoUpdate):
     db_todo = await get_todo_by_id(db, todo_id)
     if db_todo:
-        update_data = todo_update.dict(exclude_unset=True)
+        update_data = todo_update.model_dump(exclude_unset=True)
         for field, value in update_data.items():
             setattr(db_todo, field, value)
         await db.commit()

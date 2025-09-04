@@ -22,7 +22,6 @@ class Todo(TodoBase):
     id: str
     created_at: datetime
     user_id: str
-    class Config:
+    class ConfigDict:
         from_attributes = True
-        orm_mode = True
         extra = 'forbid'

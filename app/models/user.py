@@ -15,4 +15,4 @@ class User(Base):
     created_at = Column(DateTime(timezone=True), server_default=func.now())
 
     
-    todos = relationship("ToDo", back_populates="user")
+    todos = relationship("ToDo", back_populates="user", cascade="all, delete-orphan")

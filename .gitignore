@@ -1,3 +1,4 @@
 .env
 /test
+/deps
 __pycache__

@@ -13,3 +13,7 @@ psycopg2
 pydantic[email]
 python-multipart
 psycopg2-binary
+alembic
+pytest
+pytest-asyncio
+httpx

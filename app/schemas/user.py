@@ -13,11 +13,14 @@ class User(UserBase):
     id: str
     created_at: datetime
     
-    class Config:
+    class ConfigDict:
         from_attributes = True
-        orm_mode = True
         extra = 'forbid'
 
 class UserUpdate(BaseModel):
     username: Optional[str] = None
     password: Optional[str] = None
+
+class UserUpdateResponse(BaseModel):
+    user: User
+    access_token: str

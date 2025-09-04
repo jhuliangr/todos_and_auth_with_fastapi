@@ -110,7 +110,7 @@ async def test_create_user_password_hashing(mock_db_session):
 
 @pytest.mark.asyncio
 async def test_update_user_found(mock_db_session, test_user):
-    """Test para actualizar un usuario existente"""
+    """Test for updating an existing user"""
     with patch('app.crud.user.get_user_by_email', AsyncMock(return_value=test_user)):
         update_data = UserUpdate(
             username="updateduser",

@@ -20,6 +20,11 @@ pip install -r requirements.txt
 alembic upgrade head
 ```
 
+## To execute tests
+```python
+pytest
+```
+
 ## To run project
 ```python
 python main.py
